@@ -1,13 +1,66 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.blue-label {
+		@apply tracking-wider text-b text-main font-bold
+	}
+	
+	.flex-center {
+		@apply flex justify-center items-center
+	}
+
+	.f-h-center {
+		@apply flex justify-center
+	}
+	
+	.f-h-between {
+		@apply flex justify-between
+	}
+	
+	.f-v-center {
+		@apply flex items-center
+	}
+
+	.pointer {
+		@apply cursor-pointer
+	}
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.c-transition-all {
+	transition: all .4s ease-in-out
+}
+
+.home-bg {
+	background: url('./img/home-bg.webp') no-repeat 100% 100%;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.home-bg2 {
+	background: url('./img/home-bg2.webp') no-repeat 100% 100%;
+	background-size: cover;
+}
+
+@media only screen and (max-width: 950px) {
+	.burger {
+		display: block;
+	}
+	
+	.menu {
+		display: none;
+	}
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #343434
+}
+
+::-webkit-scrollbar-track {
+	background: transparent
 }
