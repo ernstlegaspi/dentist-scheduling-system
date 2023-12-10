@@ -1,10 +1,14 @@
 import React from 'react'
 
 import Logo from './Logo'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { bottomLinks } from '../constants'
 
 export default function Bottom() {
+	const { pathname } = useLocation()
+
+	if(pathname === '/auth/sign-in') return null
+
 	return (
 		<div className="py-16 shadow shadow-black">
 			<div className="w-[80%] mx-auto text-dark2 tracking-wide flex text-s max-[975px]:flex-col max-[975px]:w-[90%]">
@@ -15,8 +19,8 @@ export default function Bottom() {
 				</div>
 				<div className="ml-16 max-[975px]:ml-0">
 					<p className="mb-3">Useful <span className='font-bold'>Links</span></p>
-					{bottomLinks.map(link => (
-						<div className="w-max text-base">
+					{bottomLinks.map((link, idx) => (
+						<div key={idx} className="w-max text-base">
 							<Link to={link.link}>
 								<p className="pointer hover:underline py-2">• {link.text}</p>
 							</Link>

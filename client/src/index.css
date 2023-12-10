@@ -7,6 +7,10 @@
 		@apply tracking-wider text-b text-main font-bold
 	}
 	
+	.default {
+		@apply cursor-default
+	}
+	
 	.flex-center {
 		@apply flex justify-center items-center
 	}
@@ -32,6 +36,16 @@
 	transition: all .4s ease-in-out
 }
 
+.auth-bg {
+	background: url('./img/auth-bg.webp') no-repeat center center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.black-shadow {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .home-bg {
 	background: url('./img/home-bg.webp') no-repeat 100% 100%;
 	background-size: cover;
@@ -43,14 +57,8 @@
 	background-size: cover;
 }
 
-@media only screen and (max-width: 950px) {
-	.burger {
-		display: block;
-	}
-	
-	.menu {
-		display: none;
-	}
+.white-shadow {
+	box-shadow: 0 0 5px rgba(255, 255, 255, 1);
 }
 
 ::-webkit-scrollbar {

@@ -7,7 +7,7 @@ module.exports = {
 			colors: {
 				"dark": "#343434",
 				"dark2": "#404041",
-				"hover": "#407bff",
+				"hover": "#185FFF",
 				"main": "#407bff"
 			},
 			fontSize: {

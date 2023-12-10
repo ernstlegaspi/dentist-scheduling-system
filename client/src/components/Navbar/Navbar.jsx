@@ -1,18 +1,18 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react'
 
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Button from '../Button'
 import Logo from '../Logo'
 
 const Menu = lazy(() => import('./Menu'))
 
 const Navbar = () => {
+	const { pathname } = useLocation()
 	const [isScrolled, setIsScrolled] = useState(false)
 
 	useEffect(() => {
 		const handleScroll = () => {
 			setIsScrolled(window.scrollY >= 2)
-			console.log(window.scrollY >= 2)
 		}
 
 		window.addEventListener('scroll', handleScroll)
@@ -22,6 +22,8 @@ const Navbar = () => {
 		}
 	}, [])
 
+	if(pathname === '/auth/sign-in') return null
+	
 	const NavbarButton = ({ href, text }) => {
 		const [hovered, setHovered] = useState(false)
 	
@@ -41,12 +43,13 @@ const Navbar = () => {
 			<Suspense fallback={<p>Loading...</p>}>
 				<Menu />
 			</Suspense>
-			<div className="f-v-center mt-[15px] menu">
+			<div className="f-v-center mt-[15px] max-[1030px]:hidden">
 				<NavbarButton href="/about/" text="About" />
 				<NavbarButton href="/services/" text="Services" />
 				<NavbarButton href="/problems-we-treat/" text="Problems We Treat" />
-				<div className="mt-[-10px]">
-					<Button href="/schedule-appointment" text="Schedule Appointment" />
+				<div className="mt-[-10px] f-v-center">
+					<Button href="/schedule-appointment/" text="Schedule Appointment" />
+					<Button extraClass="ml-3" href="/auth/sign-in" text="Sign In" />
 				</div>
 			</div>
 		</div>
