@@ -7,7 +7,7 @@ import { bottomLinks } from '../constants'
 export default function Bottom() {
 	const { pathname } = useLocation()
 
-	if(pathname === '/auth/sign-in') return null
+	if(pathname === '/auth/sign-in' || pathname === '/schedule-appointment' || pathname === '/schedule-appointment/' || pathname === "/dashboard") return null
 
 	return (
 		<div className="py-16 shadow shadow-black">

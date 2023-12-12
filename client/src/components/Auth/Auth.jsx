@@ -1,16 +1,16 @@
 import { lazy, Suspense, useState } from 'react'
 
-import useUserLoggedIn from "../../hooks/useUserLoggedIn"
 import ErrorPage from "../ErrorPage"
 import Logo from "../Logo"
-import SignIn from "./SignIn"
-import SignUp from "./SignUp"
+
+const SignIn = lazy(() => import("./SignIn"))
+const SignUp = lazy(() => import("./SignUp"))
 
 export default function Auth() {
+	const isLoggedIn = JSON.parse(localStorage.getItem('token'))?.token
 	const [isSignIn, setIsSignIn] = useState(true)
-	const { hasToken } = useUserLoggedIn()
 
-	if(hasToken) return <ErrorPage />
+	if(isLoggedIn) return <ErrorPage />
 	
 	return (
 		<div className="relative h-[100vh] w-full">

@@ -5,6 +5,10 @@ import User from '../models/user.js'
 
 import { clientError, serverError500, success } from '../utils/index.js'
 
+/*
+	----- START AUTH CONTROLLERS -----
+*/
+
 export const login = async (req, res) => {
 	serverError500(res, async () => {
 		const { email, password } = req.body
@@ -18,13 +22,16 @@ export const login = async (req, res) => {
 		if(!comparePassword) return clientError(res, 401, "Unauthorized: User does not exist")
 
 		const token = jwt.sign({ id: user._id }, process.env.KEY, { expiresIn: '15m' })
-		
-		res.cookie("token", token, {
-			httpOnly: true,
-			sameSite: 'Strict'
-		})
 
-		success(res, 200, { result: user.email, message: 'User logged in successfully' })
+		success(res, 200, { result: {
+			token,
+			id: user._id,
+			email: user.email,
+			name: user.name,
+			birthday: user.birthday,
+			phoneNumber: user.phoneNumber,
+			message: 'User logged in successfully'
+		}})
 	})
 }
 
@@ -44,24 +51,44 @@ export const register = async (req, res) => {
 		delete newUser.password
 
 		const token = jwt.sign({ id: newUser._id }, process.env.KEY, { expiresIn: '15m' })
-		
-		res.cookie("token", token, {
-			httpOnly: true,
-			sameSite: 'Strict'
-		})
 
-		success(res, 201, { result: newUser.email, message: "User Created" })
+		success(res, 201, { result: {
+			token,
+			id: newUser._id,
+			email: newUser.email,
+			name: newUser.name,
+			birthday: newUser.birthday,
+			phoneNumber: newUser.phoneNumber,
+			message: 'User created successfully.'
+		}})
 	})
 }
 
-export const verifyEmail = async (req, res) => {
+/*
+	----- END AUTH CONTROLLERS -----
+*/
+
+export const getAppointmentsPerUser = async (req, res) => {
 	serverError500(res, async () => {
-		const { email } = req.params
+		const { userId } = req.params
 
-		const user = await User.findOne({ email })
+		const appointments = await User.findById({ _id: userId })
+			.populate("appointments")
+			.exec()
 
-		if(!user) return clientError(res, 404, 'User not found')
+		success(res, 200, { appointments, message: 'Appointments Retrieved' })
+	})
+}
 
-		success(res, 200, {})
+export const updateUserInfo = async (req, res) => {
+	serverError500(res, async () => {
+		const { _id, birthday, email, name, phoneNumber } = req.body
+		
+		const updatedUser = await User.findByIdAndUpdate({ _id },
+			{ $set: { birthday, email, name, phoneNumber } },
+			{ new: true }
+		)
+
+		success(res, 200, { results: updatedUser, message: 'User Information Updated' })
 	})
 }

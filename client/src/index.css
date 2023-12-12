@@ -27,6 +27,10 @@
 		@apply flex items-center
 	}
 
+	.main-bold {
+		@apply text-main font-bold
+	}
+
 	.pointer {
 		@apply cursor-pointer
 	}

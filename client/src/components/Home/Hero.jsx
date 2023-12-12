@@ -10,7 +10,7 @@ export default function Hero() {
 			<p className="font-bold text-b max-sm:text-n max-[480px]:text-[23px]">Your Trusted Liberty Dentist</p>
 			<p className="max-sm:text-s">Modern Dentistry with a Personal Touch</p>
 			<div className="w-[50px] h-[2px] mt-5 mb-8 bg-white"></div>
-			<Button extraClass="max-[350px]:w-[250px] max-[350px]:text-base" href="/schedule-appointment" text="Schedule Appointment" />
+			<Button extraClass="max-[350px]:w-[250px] max-[350px]:text-base" href="/schedule-appointment/" text="Schedule Appointment" />
 		</div>
 	</div>
 }

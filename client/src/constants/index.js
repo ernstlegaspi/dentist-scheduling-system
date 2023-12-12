@@ -7,6 +7,17 @@ import tooth2 from '../img/tooth2.webp'
 import tooth3 from '../img/tooth3.webp'
 import tooth4 from '../img/tooth4.webp'
 
+export const appointmentTimes = [
+	"8:00 AM - 9:00 AM",
+	"9:00 AM - 10:00 AM",
+	"10:00 AM - 11:00 AM",
+	"11:00 AM - 12:00 PM",
+	"1:00 PM - 2:00 PM",
+	"2:00 PM - 3:00 PM",
+	"3:00 PM - 4:00 PM",
+	"4:00 PM - 5:00 PM"
+]
+
 export const bottomLinks = [
 	{
 		link: "/about/",

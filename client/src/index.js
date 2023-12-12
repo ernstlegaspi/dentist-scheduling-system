@@ -5,4 +5,10 @@ import './index.css'
 
 import App from './App'
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+import QueryProvider from './utils/providers/QueryProvider'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+	<QueryProvider>
+		<App />
+	</QueryProvider>
+)

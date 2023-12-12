@@ -5,15 +5,12 @@ import { useNavigate } from 'react-router-dom'
 import Input from "../Input"
 import Button from '../Button'
 
-import useUserLoggedIn from '../../hooks/useUserLoggedIn'
-
 import { register } from '../../api/api'
 import { days, months, sex, years } from '../../constants'
 import { birthdaySchema, registerSchema } from '../../utils/schema'
 
 export default function SignUp({ setIsSignIn }) {
 	const navigate = useNavigate()
-	const { setHasToken } = useUserLoggedIn()
 	const initialState = { name: '', email: '', password: '', phoneNumber: '', sex: '' }
 	const [birthday, setBirthday] = useState({ months:'', days: '', years: '' })
 	const [formData, setFormData] = useState(initialState)
@@ -48,14 +45,13 @@ export default function SignUp({ setIsSignIn }) {
 
 			toast.success('Registered successfully.')
 
-			localStorage.setItem('token', data.result)
+			localStorage.setItem('token', JSON.stringify(data.result))
 			
 			setDisabled(false)
 			setBirthday({ days: '', months: '', years: '' })
 			setFormData(initialState)
-			setHasToken(true)
 
-			navigate('/')
+			navigate('/dashboard')
 		}
 		catch({ response }) {
 			setDisabled(false)
