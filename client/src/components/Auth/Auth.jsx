@@ -24,11 +24,6 @@ export default function Auth() {
 						<Suspense fallback={<p>Changing form..</p>}>
 							{isSignIn ? <SignIn setIsSignIn={setIsSignIn} /> : <SignUp setIsSignIn={setIsSignIn} />}
 						</Suspense>
-						<div className="relative my-8">
-							<div className="w-full h-[1px] bg-dark2"></div>
-							<p className="absolute mt-[-24px] left-[50%] translate-x-[-50%] bg-white p-2 rounded-full">or</p>
-						</div>
-						<p>Facebook and google login placeholder</p>
 					</div>
 				</div>
 			</div>

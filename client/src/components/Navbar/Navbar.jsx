@@ -24,7 +24,11 @@ const Navbar = () => {
 		}
 	}, [])
 
-	if(pathname === '/auth/sign-in' || pathname === '/schedule-appointment' || pathname === '/schedule-appointment/' || pathname === "/dashboard") return null
+	if(pathname === '/auth/sign-in/'
+		|| pathname === '/auth/sign-in'
+		|| pathname === '/schedule-appointment'
+		|| pathname === '/schedule-appointment/'
+		|| pathname === "/dashboard") return null
 
 	return (
 		<div className={`${isScrolled ? 'bg-black/60' : 'bg-transparent'} c-transition-all fixed z-50 w-full f-h-between items-center text-white p-6`}>

@@ -12,7 +12,7 @@ import ErrorPage from '../ErrorPage'
 import useEditUserInfo from '../../hooks/useEditUserInfo'
 
 export default function Dashboard() {
-	const [isProfile, setIsProfile] = useState(true)
+	const [isProfile, setIsProfile] = useState(false)
 	const isLoggedIn = JSON.parse(localStorage.getItem('token'))
 	const { isEdit } = useEditUserInfo()
 	const queryClient = new QueryClient()
